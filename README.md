@@ -1,3 +1,3 @@
-# Project 1
+# Book Review Flask App
 
-Web Programming with Python and JavaScript
+Testing Flask and SQLAlchemy
