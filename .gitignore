@@ -1,6 +1,4 @@
 templates/.DS_Store
 .DS_Store
-flask_session/2029240f6d1128be89ddc32729463129
-flask_session/b36cd5b07afbd812145ac87302c9dfd0
-__pycache__/application.cpython-37.pyc
-__pycache__/helpers.cpython-37.pyc
+flask_session/*
+__pycache__/*
