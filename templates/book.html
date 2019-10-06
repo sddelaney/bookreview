@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Book
+{% endblock %}
+
+{% block main %}
+<form action="/book" method="get">
+    {% for row in rows %} 
+    <div class="row">
+    <div class="col-md-8 form-group border border-primary">
+        <h2 style="text-decoration: underline;">{{row["title"]}}</h2>
+        <h4>Author: {{row["author"]}}</h4>
+        <h5>{{row["year"]}}</h5>
+        <p>ISBN: {{row["isbn"]}}</p>
+
+    </div>
+    {% endfor %}<br>
+    <div class="col-md-4" >
+    <table align="center" class='table table-condensed table-hover text-centered' style="width: auto">
+        <br><h5>Goodreads data:</h5>
+        <thead>
+            <tr>
+                <th>Average</th>
+                <th># Ratings</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>{{res['average_rating']}}</th>
+                <th>{{res['work_ratings_count']}}</th>
+            </tr>
+        </tbody>
+
+    </table>
+    </div>
+    </div>
+    {% if reviews.rowcount > 0 %}  
+    <br>
+    <div class="form-group">
+        <h4>User Reviews</h4>
+        <table class='table table-condensed table-striped table-hover'>
+                <tr><th style="width: 15%">User</th><th>Review</th><th style="width: 15%">Rating</th></tr>
+                {% for r in reviews %}
+                    <tr class="table-row" >
+                        <td>{{r["name"]}}</td><td>{{r["review"]}}</td><td>{{r["score"]}}</td>
+                    </tr>
+                {% endfor %}
+        </table>
+            
+    </div>
+    {% endif %}
+</form>
+<br>
+<form action={{"/review/"+isbn}} method="post">
+    <div class="form-group">
+        <textarea class="form-control" style="width:100%" autocomplete="off" placeholder="Enter review" name="review" id="bookreview" rows="6"></textarea>
+        <label for="sel1">Rating:  </label>
+        <select class="form-control" id="rating" name=rating>
+            <option selected >5</option> 
+            <option>4</option>
+            <option>3</option>
+            <option>2</option>
+            <option>1</option>
+        </select>
+    </div>
+    <button class="btn btn-primary" type="submit">Review</button>
+</form>
+{% endblock %}
