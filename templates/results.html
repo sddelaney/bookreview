@@ -13,7 +13,7 @@
                     <tr><th>ISBN</th><th>Title</th><th>Author</th><th>Year</th></tr>
                     {% for row in rows %}
                         <tr class="table-row" >
-                            <td><a href="{{ url_for('book', isbn=row['isbn']) }}" >{{row["isbn"]}}</a></td><td>{{row["title"]}}</td><td>{{row["author"]}}</td><td>{{row["year"]}}</td>
+                            <td><a href="{{ url_for('book', isbn=row['isbn']) }}" >{{row.isbn}}</a></td><td>{{row.title}}</td><td>{{row.author}}</td><td>{{row.year}}</td>
                         </tr>
                     {% endfor %}
                  </table>
