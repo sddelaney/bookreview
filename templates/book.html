@@ -6,16 +6,15 @@
 
 {% block main %}
 <form action="/book" method="get">
-    {% for row in rows %} 
     <div class="row">
     <div class="col-md-8 form-group border border-primary">
-        <h2 style="text-decoration: underline;">{{row["title"]}}</h2>
-        <h4>Author: {{row["author"]}}</h4>
-        <h5>{{row["year"]}}</h5>
-        <p>ISBN: {{row["isbn"]}}</p>
+        <h2 style="text-decoration: underline;">{{row.title}}</h2>
+        <h4>Author: {{row.author}}</h4>
+        <h5>{{row.year}}</h5>
+        <p>ISBN: {{row.isbn}}</p>
 
     </div>
-    {% endfor %}<br>
+    <br>
     <div class="col-md-4" >
     <table align="center" class='table table-condensed table-hover text-centered' style="width: auto">
         <br><h5>Goodreads data:</h5>
@@ -35,7 +34,7 @@
     </table>
     </div>
     </div>
-    {% if reviews.rowcount > 0 %}  
+    {% if reviews|length > 0 %}  
     <br>
     <div class="form-group">
         <h4>User Reviews</h4>
@@ -43,7 +42,7 @@
                 <tr><th style="width: 15%">User</th><th>Review</th><th style="width: 15%">Rating</th></tr>
                 {% for r in reviews %}
                     <tr class="table-row" >
-                        <td>{{r["name"]}}</td><td>{{r["review"]}}</td><td>{{r["score"]}}</td>
+                        <td>{{r[1].name}}</td><td>{{r[0].review}}</td><td>{{r[0].score}}</td>
                     </tr>
                 {% endfor %}
         </table>
