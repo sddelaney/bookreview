@@ -8,6 +8,8 @@ export FLASK_APP=application.py
 
 export DATABASE_URL=postgres://...
 
+----------------------------------
+
 Run import first to create DB and import books
 
 python3 import.py
